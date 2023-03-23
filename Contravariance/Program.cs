@@ -15,9 +15,9 @@ namespace Contravariance
                 Console.WriteLine(item.Name + "---" + item.age);
             }
             
-            IPersonComparer<Employee> personComparer = new PersonComparer(); // IPersonComparer<in Person>
+            IPersonComparer<Employee> EmployeeComparer = new PersonComparer(); // IPersonComparer<in T>
 
-            var result = personComparer.Compare(employees[0], employees[1]);
+            var result = EmployeeComparer.Compare(employees[0], employees[1]);
             Console.WriteLine(result);
         }
     }

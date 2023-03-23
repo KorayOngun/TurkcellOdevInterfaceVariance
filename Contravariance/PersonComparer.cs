@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Contravariance
 {
-    public class PersonComparer : IPersonComparer<Person>
+    public class PersonComparer : IPersonComparer<Person>   
     {
         public bool Compare(Person x, Person y)
         {
             return x.age > y.age;
         }
+
+        
     }
 }
