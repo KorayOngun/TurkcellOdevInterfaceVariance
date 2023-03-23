@@ -13,7 +13,8 @@
             bagOfApple.Add(new Apple {Name = "3. elma " });
 
             
-            IBag<Fruit> bagOfFruit = bagOfApple;
+
+            IBag<Fruit> bagOfFruit = bagOfApple; // IBag<Apple>
             bagOfApple.Add(new Apple { Name = "4. elma " });
             Console.WriteLine(bagOfFruit.Get(3).Name);
 
