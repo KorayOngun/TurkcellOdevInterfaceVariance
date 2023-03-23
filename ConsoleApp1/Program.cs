@@ -5,11 +5,45 @@
         static void Main(string[] args)
         {
 
-            ICovariant<Base> baseCovariant = null;
-            ICovariant<Child> chieldCovariant = null;
+
+
+           Base x = new Base();
+           Base y = new Derived();
+           Derived z = new Derived();
+
+            // Derived : Base
+            // IProducer<Derived> : Iproducer<Base>
+
+            IProducer<Base> prodOfBase = null;
+            Base a = prodOfBase.Produce();
+
+            IProducer<Derived> prodOfDerived = null;
+            Derived b = prodOfDerived.Produce();
+            Base c = prodOfDerived.Produce();
             
 
+            // Derived : Base
+            // IConsumer<Base> : IConsumer<Derived>
 
+            IConsumer<Base> consumerOfBase = null;
+            consumerOfBase.Consume(new Base());
+            consumerOfBase.Consume(new Derived());
+
+            IConsumer<Derived> consumerOfDerived = null;
+            consumerOfDerived.Consume(new Derived());
+
+
+            //----------------------------------------------------------------
+
+            // Derived : Base
+            // IProducer<Derived> : Iproducer<Base>
+            IProducer<Base> p = prodOfBase;
+            IProducer<Base> q = prodOfDerived;
+
+            // Derived : Base
+            // IConsumer<Base> : IConsumer<Derived>
+            IConsumer<Derived> k = consumerOfBase;
+            IConsumer<Derived> l = consumerOfDerived;
 
 
         }
@@ -19,23 +53,28 @@
 
 
 
-interface ICovariant <out T>
+interface IProducer <out T>
 {
-    T GetValue();
+    T Produce();
 }
-interface IContravariant<in T>
+interface IConsumer<in T>
 {
-    void GetValue(T t);
+    void Consume(T t);
 }
 class Base
 {
-    void DoSomething()
+    public  void  DoSomething()
     {
         Console.WriteLine("...");
     }
 }
 
-class Child : Base
+class Derived : Base
 {
+    public void DoMore()
+    {
+        Console.WriteLine("........");
+    }
+
 
 }
