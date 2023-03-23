@@ -35,7 +35,6 @@
             apples.Add(new Apple { Name = "4. elma " });
             foreach (Fruit item in fruits)
                 Console.WriteLine($"{item.Name}");
-            Fruit f = new Banana {Name = "muz" };
 
             
 
